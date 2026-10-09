@@ -1,0 +1,25 @@
+/**
+ * Every external URL in one place. After deploying a demo, update its `live` link here.
+ */
+export const LINKS = {
+  email: 'morm.alyosha@gmail.com',
+  github: 'https://github.com/MOlexiy',
+  projects: {
+    wordloop: {
+      live: 'https://word-learning-phi.vercel.app/',
+      code: 'https://github.com/MOlexiy/word-learning',
+    },
+    eventpass: {
+      live: 'https://eventpass-demo.vercel.app/',
+      code: 'https://github.com/MOlexiy/EventPass',
+    },
+    aiPlatform: {
+      live: 'https://ai-platform-demo.onrender.com/',
+      code: 'https://github.com/MOlexiy/ai-platform',
+    },
+    smartSender: {
+      live: 'https://smart-sender-test.vercel.app/',
+      code: 'https://github.com/MOlexiy/smart-sender-test',
+    },
+  },
+} as const;

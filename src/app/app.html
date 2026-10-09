@@ -1,0 +1,124 @@
+@let c = t();
+
+<a class="skip-link" href="#main">{{ c.projects.title }}</a>
+
+<header class="topbar">
+  <div class="wrap topbar__inner">
+    <a class="topbar__name" href="#top">{{ c.hero.name }}</a>
+    <nav class="topbar__nav" [attr.aria-label]="c.nav.projects">
+      <a href="#projects">{{ c.nav.projects }}</a>
+      <a href="#skills">{{ c.nav.skills }}</a>
+      <a href="#experience">{{ c.nav.experience }}</a>
+      <a href="#contact">{{ c.nav.contact }}</a>
+    </nav>
+    <div class="lang" role="group" [attr.aria-label]="c.langSwitch.label">
+      @for (l of langs; track l) {
+        <button type="button" class="lang__btn" [attr.aria-pressed]="lang() === l" (click)="setLang(l)">
+          {{ c.langSwitch[l] }}
+        </button>
+      }
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero wrap" id="top">
+    <h1 class="hero__name">{{ c.hero.name }}</h1>
+    <div class="hero__body">
+      <div>
+        <p class="hero__role">{{ c.hero.role }}</p>
+        <p class="hero__intro">{{ c.hero.intro }}</p>
+        <p class="hero__location">{{ c.hero.location }}</p>
+        <div class="hero__actions">
+          <a class="button button--solid" [href]="'mailto:' + links.email">{{ c.hero.emailCta }}</a>
+          <a class="button" [href]="links.linkedin" target="_blank" rel="noopener">{{ c.hero.linkedinCta }}</a>
+          <a class="button" [href]="links.github" target="_blank" rel="noopener">{{ c.hero.githubCta }}</a>
+        </div>
+      </div>
+      <ul class="hero__index" [attr.aria-label]="c.nav.projects">
+        @for (p of c.projects.items; track p.id) {
+          <li>
+            <a [href]="'#' + p.id" [class]="'project--' + p.id">
+              <span class="hero__swatch" aria-hidden="true"></span>
+              <span class="hero__index-name">{{ p.name }}</span>
+              <span class="hero__index-stack">{{ p.tag }}</span>
+            </a>
+          </li>
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="section wrap" id="projects" aria-labelledby="projects-title">
+    <div class="section__head">
+      <h2 class="section__title" id="projects-title">{{ c.projects.title }}</h2>
+      <p class="section__lead">{{ c.projects.lead }}</p>
+    </div>
+    @for (p of c.projects.items; track p.id; let first = $first) {
+      <app-project [project]="p" [labels]="c.projects" [eager]="first" />
+    }
+  </section>
+
+  <section class="section wrap" id="skills" aria-labelledby="skills-title">
+    <h2 class="section__title" id="skills-title">{{ c.skills.title }}</h2>
+    <div class="skills">
+      @for (g of c.skills.groups; track g.title) {
+        <div class="skills__group">
+          <h3>{{ g.title }}</h3>
+          <ul>
+            @for (item of g.items; track item) {
+              <li>{{ item }}</li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </section>
+
+  <section class="section wrap" id="experience" aria-labelledby="experience-title">
+    <h2 class="section__title" id="experience-title">{{ c.experience.title }}</h2>
+    <ol class="jobs">
+      @for (job of c.experience.jobs; track job.company) {
+        <li class="jobs__item">
+          <p class="jobs__period">{{ job.period }}</p>
+          <div>
+            <h3 class="jobs__role">{{ job.role }}, {{ job.company }}</h3>
+            <p class="jobs__place">{{ job.place }}</p>
+            <ul class="jobs__points">
+              @for (point of job.points; track point) {
+                <li>{{ point }}</li>
+              }
+            </ul>
+          </div>
+        </li>
+      }
+    </ol>
+    <div class="education">
+      <h3>{{ c.experience.educationTitle }}</h3>
+      <div>
+        <p>{{ c.experience.education }}</p>
+        <p class="education__thesis">
+          {{ c.experience.thesis }}
+          <a [href]="links.thesis" target="_blank" rel="noopener">{{ c.experience.thesisLink }}</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <h2 class="contact__title" id="contact-title">{{ c.contact.title }}</h2>
+      <p class="contact__text">{{ c.contact.text }}</p>
+      <a class="contact__email" [href]="'mailto:' + links.email">{{ links.email }}</a>
+      <ul class="contact__links">
+        <li><a [href]="links.telegram" target="_blank" rel="noopener">{{ c.contact.telegram }}</a></li>
+        <li><a [href]="links.linkedin" target="_blank" rel="noopener">{{ c.contact.linkedin }}</a></li>
+        <li><a [href]="links.github" target="_blank" rel="noopener">{{ c.contact.github }}</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="footer wrap">
+  <p>{{ c.footer }}</p>
+</footer>

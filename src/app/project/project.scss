@@ -1,0 +1,123 @@
+:host {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  align-items: start;
+  padding-block: clamp(2.5rem, 6vw, 5rem);
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 4rem;
+}
+
+:host(:nth-of-type(even)) .project__shot {
+  order: -1;
+}
+
+.project__name {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(1.6rem, 3vw, 2.25rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+
+  &::before {
+    content: '';
+    flex: none;
+    width: 0.7em;
+    height: 0.7em;
+    border-radius: 3px;
+    background: var(--project);
+  }
+}
+
+.project__summary {
+  font-size: 1.125rem;
+  margin: 0 0 1.75rem;
+}
+
+.project__label {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0 0 0.5rem;
+}
+
+.project__highlights {
+  margin: 0 0 1.5rem;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.45rem;
+
+  li::marker {
+    color: var(--project);
+  }
+}
+
+.project__stack {
+  margin: 0 0 1.75rem;
+}
+
+.project__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.project__access,
+.project__note {
+  font-size: 0.9375rem;
+  color: var(--muted);
+  margin: 0 0 0.35rem;
+  overflow-wrap: anywhere;
+}
+
+.project__shot {
+  display: block;
+  background: var(--project);
+  border-radius: 14px;
+  padding: clamp(1rem, 3.5vw, 2.75rem) 0 0 clamp(1rem, 3.5vw, 2.75rem);
+  overflow: hidden;
+  position: sticky;
+  top: 5rem;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px 0 0 0;
+    box-shadow: 0 0 0 1px rgb(0 0 0 / 0.08), -12px 16px 40px rgb(0 0 0 / 0.22);
+    transition: transform 0.35s ease;
+    transform-origin: top left;
+  }
+
+  &:hover img {
+    transform: translate(-4px, -4px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--ink);
+    outline-offset: 4px;
+  }
+}
+
+@media (max-width: 860px) {
+  :host {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  :host(:nth-of-type(even)) .project__shot,
+  .project__shot {
+    order: -1;
+    position: static;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project__shot img {
+    transition: none;
+  }
+}

@@ -1,0 +1,102 @@
+:root {
+  --paper: #f2f3f1;
+  --ink: #17202a;
+  --muted: #56616d;
+  --line: #d6dad8;
+  --on-ink: #f2f3f1;
+
+  --font-display: 'Unbounded Variable', 'Arial Black', system-ui, sans-serif;
+  --font-body: 'Onest Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #13161a;
+    --ink: #e8ebee;
+    --muted: #9aa4af;
+    --line: #2b3138;
+    --on-ink: #13161a;
+    color-scheme: dark;
+  }
+}
+
+/* Each project keeps the colour of its own interface: the work brings the colour to this page. */
+.project--wordloop { --project: #2f5d50; }
+.project--eventpass { --project: #ff5a1f; }
+.project--aiPlatform { --project: #a85a0c; }
+.project--smartSender { --project: #2a5bd7; }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.wrap {
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: 0.55rem 1.15rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.975rem;
+  text-decoration: none;
+  color: var(--ink);
+  background: transparent;
+  transition: background-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: color-mix(in srgb, var(--ink) 8%, transparent);
+  }
+}
+
+.button--solid {
+  background: var(--ink);
+  color: var(--on-ink);
+
+  &:hover {
+    background: color-mix(in srgb, var(--ink) 85%, var(--paper));
+  }
+}
