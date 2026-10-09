@@ -4,6 +4,9 @@
 export const LINKS = {
   email: 'morm.alyosha@gmail.com',
   github: 'https://github.com/MOlexiy',
+  linkedin: 'https://www.linkedin.com/in/mormulolexii',
+  telegram: 'https://t.me/olexiimormul',
+  thesis: 'https://ir.library.knu.ua/entities/publication/87e6e18d-c479-44b8-b9fb-7238369c554d',
   projects: {
     wordloop: {
       live: 'https://word-learning-phi.vercel.app/',
