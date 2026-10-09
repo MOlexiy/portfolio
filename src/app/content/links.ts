@@ -10,7 +10,7 @@ export const LINKS = {
       code: 'https://github.com/MOlexiy/word-learning',
     },
     eventpass: {
-      live: 'https://eventpass-demo.vercel.app/',
+      live: 'https://eventpass-demo-chi.vercel.app/',
       code: 'https://github.com/MOlexiy/EventPass',
     },
     aiPlatform: {
